@@ -36,7 +36,7 @@ class FiltratedHorseUrineCauldron(properties: Properties, interactions: Cauldron
     }
 
     override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block?, BlockState?>) {
-        builder.add(LEVEL)
+        super.createBlockStateDefinition(builder)
         builder.add(PROGRESS)
     }
 
