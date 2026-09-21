@@ -5,6 +5,10 @@ import dev.mayaqq.cynosure.text.CommonText
 import dev.mayaqq.cynosure.text.unaryMinus
 import dev.mayaqq.estrogen.client.content.screen.EstrogenButton
 import dev.mayaqq.estrogen.client.content.screen.EstrogenMenuScreen
+import dev.mayaqq.estrogen.client.extensions.posX
+import dev.mayaqq.estrogen.client.extensions.posY
+import dev.mayaqq.estrogen.client.extensions.widgetHeight
+import dev.mayaqq.estrogen.client.extensions.widgetWidth
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.gui.screens.inventory.InventoryScreen
 import net.minecraft.util.Mth
@@ -39,9 +43,9 @@ class CosmeticPreview(val player: Player?, x: Int, y: Int, width: Int, height: I
             player.yHeadRotO = player.yRot
             InventoryScreen.renderEntityInInventory(
                 graphics,
-                (getX() + getWidth() / 2f),
-                getY() + getHeight() - 20f,
-                getHeight() / 2.5f,
+                (posX + widgetWidth / 2f),
+                posY + widgetHeight - 20f,
+                widgetHeight / 2.5f,
                 Vector3f(),
                 quaternion,
                 null,

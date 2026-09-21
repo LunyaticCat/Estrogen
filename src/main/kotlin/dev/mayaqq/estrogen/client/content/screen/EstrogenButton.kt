@@ -40,11 +40,11 @@ open class EstrogenButton(
 ) : Button(x, y, width, height, CommonText.EMPTY, onPress, createNarration) {
 
     override fun renderWidget(graphics: GuiGraphics, mouseX: Int, mouseY: Int, partialTick: Float) {
-        graphics.fill(this.posX, this.posY, posX + width, posY + height, -0x2FEFEFF0)
+        graphics.fill(this.posX, this.posY, posX + widgetWidth, posY + widgetHeight, -0x2FEFEFF0)
         if (disabled) {
-            graphics.renderOutline(posX + 1, posY + 1, width - 2, height - 2,  color.darker().toInt())
+            graphics.renderOutline(posX + 1, posY + 1, widgetWidth - 2, widgetHeight - 2,  color.darker().toInt())
         } else {
-            graphics.renderOutline(posX + 1, posY + 1, width - 2, height - 2,  if (isHoveredOrFocused && !renderOnly) Yellow.toInt() else color.toInt())
+            graphics.renderOutline(posX + 1, posY + 1, widgetWidth - 2, widgetHeight - 2,  if (isHoveredOrFocused && !renderOnly) Yellow.toInt() else color.toInt())
         }
 
         renderers.forEach {

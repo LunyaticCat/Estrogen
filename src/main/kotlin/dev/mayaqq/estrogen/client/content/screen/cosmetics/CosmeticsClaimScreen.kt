@@ -9,6 +9,9 @@ import dev.mayaqq.estrogen.client.content.screen.EstrogenButton
 import dev.mayaqq.estrogen.client.content.screen.EstrogenMenuScreen
 import dev.mayaqq.estrogen.client.cosmetics.CosmeticAPI
 import dev.mayaqq.estrogen.client.cosmetics.StatusCode
+import dev.mayaqq.estrogen.client.extensions.posX
+import dev.mayaqq.estrogen.client.extensions.posY
+import dev.mayaqq.estrogen.client.extensions.widgetWidth
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.gui.components.EditBox
@@ -44,9 +47,9 @@ class CosmeticsClaimScreen(previous: Screen?) : CosmeticsBaseScreen(previous, -"
             25
         ).disabled(codeBox.value.isEmpty()).buildAndAdd()
 
-        codeBox.x = (20 + fakeThirdWidth + 80) + 2
-        codeBox.y = height - 70 + 2
-        codeBox.width = (fakeThirdWidth * 2 - 160) - 4
+        codeBox.posX = (20 + fakeThirdWidth + 80) + 2
+        codeBox.posY = height - 70 + 2
+        codeBox.widgetWidth = (fakeThirdWidth * 2 - 160) - 4
         codeBox.setResponder {
             claimButton.disabled = it.isEmpty()
         }

@@ -16,6 +16,10 @@ import dev.mayaqq.estrogen.api.EstrogenModule
 import dev.mayaqq.estrogen.client.content.screen.BaseEstrogenScreen
 import dev.mayaqq.estrogen.client.content.screen.EstrogenButton
 import dev.mayaqq.estrogen.client.content.screen.EstrogenMenuScreen.Companion.transBlue
+import dev.mayaqq.estrogen.client.extensions.posX
+import dev.mayaqq.estrogen.client.extensions.posY
+import dev.mayaqq.estrogen.client.extensions.widgetHeight
+import dev.mayaqq.estrogen.client.extensions.widgetWidth
 import dev.mayaqq.estrogen.id
 import dev.mayaqq.estrogen.modules.getModules
 import invoke.kitty.kritter.utils.color.LightBlue
@@ -96,19 +100,19 @@ class ModulesScreen(previous: Screen?) : BaseEstrogenScreen(previous, Text.of("e
                 append(mod.name) {
                     color = this@renderComponents.color
                 }
-            }, x + 4, y + 4 + (16 - (McFont.lineHeight / 2)), 0xFFFFFF, false)
+            }, posX + 4, posY + 4 + (16 - (McFont.lineHeight / 2)), 0xFFFFFF, false)
             // Description
             graphics.drawString(McClient.font, Text.of {
                 append("(${mod.modid})") {
                     color = MinecraftColors.DarkGray
                 }
-            }, x + 4, y + 4 + (16 - (McFont.lineHeight / 2)) + McFont.lineHeight, 0xFFFFFF, false)
+            }, posX + 4, posY + 4 + (16 - (McFont.lineHeight / 2)) + McFont.lineHeight, 0xFFFFFF, false)
             graphics.drawWordWrap(McFont, Text.of {
                 append(module.description) {
                     color = MinecraftColors.Gray
                     italic = true
                 }
-            }, x + 4, y + 40, width - 8,0xFFFFFF)
+            }, posX + 4, posY + 40, widgetWidth - 8,0xFFFFFF)
 
             graphics.drawString(McFont, Text.of {
                 append("Modifies Base: ") {
@@ -118,7 +122,7 @@ class ModulesScreen(previous: Screen?) : BaseEstrogenScreen(previous, Text.of("e
                 append(if (modifies) "✔" else "❌") {
                     color = if (modifies) MinecraftColors.Green else MinecraftColors.Red
                 }
-            }, x + 4, y + height - McFont.lineHeight - 4, 0xFFFFFF, false)
+            }, posX + 4, posY + widgetHeight - McFont.lineHeight - 4, 0xFFFFFF, false)
 
             try {
                 if (iconErrorCache.contains(mod.modid)) return
@@ -136,9 +140,9 @@ class ModulesScreen(previous: Screen?) : BaseEstrogenScreen(previous, Text.of("e
                     }
                 }
                 graphics.pushPop {
-                    translate(x + width - 32 - 4, y + 4, 0)
+                    translate(posX + widgetWidth - 32 - 4, posY + 4, 0)
                     scale(0.5F, 0.5F, 0.0F)
-                    graphics.blit(iconCache.get(mod.modid)?: return, 0, 0, 0F, 0F, 64, 64, 64, 64)
+                    graphics.blit(iconCache[mod.modid] ?: return, 0, 0, 0F, 0F, 64, 64, 64, 64)
                 }
             } catch (e: FileNotFoundException) {
                 iconErrorCache.add(mod.modid)

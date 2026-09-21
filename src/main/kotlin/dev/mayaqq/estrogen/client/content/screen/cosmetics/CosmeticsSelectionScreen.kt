@@ -8,6 +8,8 @@ import dev.mayaqq.estrogen.client.content.EstrogenRenderer
 import dev.mayaqq.estrogen.client.content.screen.EstrogenButton
 import dev.mayaqq.estrogen.client.content.screen.EstrogenMenuScreen
 import dev.mayaqq.estrogen.client.cosmetics.CosmeticAPI
+import dev.mayaqq.estrogen.client.extensions.posX
+import dev.mayaqq.estrogen.client.extensions.posY
 import dev.mayaqq.estrogen.id
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.gui.components.Tooltip
@@ -26,8 +28,8 @@ class CosmeticsSelectionScreen(previous: Screen?) : CosmeticsBaseScreen(previous
             partialTick: Float
         ) {
             graphics.blit(id("textures/gui/icons/refresh.png"),
-                this.x + 14,
-                this.y + 15,
+                this.posX + 14,
+                this.posY + 15,
                 0F,
                 0F,
                 16,

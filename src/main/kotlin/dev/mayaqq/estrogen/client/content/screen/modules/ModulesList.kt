@@ -6,6 +6,8 @@ import dev.mayaqq.cynosure.client.utils.pushPop
 import dev.mayaqq.cynosure.helpers.McClient
 import dev.mayaqq.estrogen.Estrogen
 import dev.mayaqq.estrogen.client.content.screen.EstrogenButton
+import dev.mayaqq.estrogen.client.extensions.posX
+import dev.mayaqq.estrogen.client.extensions.posY
 import dev.mayaqq.estrogen.id
 import dev.mayaqq.estrogen.modules.ModuleContainer
 import dev.mayaqq.estrogen.modules.getModules
@@ -82,7 +84,7 @@ class ModulesList(val screen: ModulesScreen) : ContainerObjectSelectionList<Modu
                     }
 
                     RenderSystem.setShaderTexture(0, icon.icon)
-                    graphics.blit(icon.icon, this@renderComponents.x + 6, this@renderComponents.y + 6, 0F, 0F, icon.width, icon.height, icon.width, icon.height)
+                    graphics.blit(icon.icon, this@renderComponents.posX + 6, this@renderComponents.posY + 6, 0F, 0F, icon.width, icon.height, icon.width, icon.height)
                 }
             }
         }
