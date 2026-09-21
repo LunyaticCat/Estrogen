@@ -68,12 +68,34 @@ object EstrogenRenderTypes {
         )
     }
 
+    private val RAINBOW_ENTITY_CUTOUT = Util.memoize<ResourceLocation, RenderType> { texture ->
+        RenderType.create(
+            "rainbow_entity_cutout",
+            DefaultVertexFormat.NEW_ENTITY,
+            VertexFormat.Mode.QUADS,
+            1536,
+            true,
+            false,
+            CompositeState.builder()
+                .setShaderState(ShaderStateShard(EstrogenRenderer::renderTypeRainbowEntityCutout))
+                .setTextureState(TextureStateShard(texture, false, false))
+                .setTransparencyState(RenderStateShard.NO_TRANSPARENCY)
+                .setLightmapState(RenderStateShard.LIGHTMAP)
+                .setOverlayState(RenderStateShard.OVERLAY)
+                .createCompositeState(true)
+        )
+    }
+
     fun entityTranslucentNoDiffuse(texture: ResourceLocation): RenderType {
         return if (isShaderPackInUse) RenderType.entityTranslucent(texture) else ENTITY_TRANSLUCENT_NO_DIFFUSE.apply(texture)
     }
 
     fun entityCutoutNoDiffuse(texture: ResourceLocation): RenderType {
         return if (isShaderPackInUse) RenderType.entityCutout(texture) else ENTITY_CUTOUT_NO_DIFFUSE.apply(texture)
+    }
+
+    fun entityCutoutRainbow(texture: ResourceLocation): RenderType {
+        return RAINBOW_ENTITY_CUTOUT.apply(texture)
     }
 
     fun modelOutline(texture: ResourceLocation): RenderType {

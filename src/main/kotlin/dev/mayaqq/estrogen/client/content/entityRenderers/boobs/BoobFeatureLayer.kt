@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack
 import dev.mayaqq.cynosure.client.utils.pushPop
 import dev.mayaqq.cynosure.utils.contains
 import dev.mayaqq.cynosure.utils.currentTime
+import dev.mayaqq.estrogen.client.content.EstrogenRenderTypes
 import dev.mayaqq.estrogen.client.features.boobs.Boob
 import dev.mayaqq.estrogen.client.features.boobs.Boob.boobSize
 import dev.mayaqq.estrogen.client.features.boobs.BoobPhysicsManager.getPhysicsForPlayer
@@ -42,7 +43,8 @@ class BoobFeatureLayer(
             // Armor that straight up disables Chest Feature and Armor and everything.
             if (entity.getItemBySlot(EquipmentSlot.CHEST) in EstrogenTags.Items.CHEST_FEATURE_DISABLED) return
 
-            val vertexConsumer = bufferSource.getBuffer(RenderType.entityCutout(entity.skin.texture()))
+            val vertexConsumer = bufferSource.getBuffer(EstrogenRenderTypes.entityCutoutRainbow(entity.skin.texture()))
+
             val m = LivingEntityRenderer.getOverlayCoords(entity, 0.0f)
             stack.pushPop {
                 var size: Float
