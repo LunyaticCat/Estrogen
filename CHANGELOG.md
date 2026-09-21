@@ -4,3 +4,4 @@
 - Patches no longer drain when Crystal Estrogen pill is used
 - Config option to adjust the scale of your chest
 - Better Physics handling with Armor (feat. config options & tags)
+- Updated Cynosure fixing multiple crashes and bugs

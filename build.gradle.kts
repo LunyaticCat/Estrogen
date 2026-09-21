@@ -100,7 +100,7 @@ cloche {
         dependency {
             modId = "cynosure"
             version {
-                start = "1.0.2"
+                start = "1.0.3"
                 startInclusive = true
             }
         }
@@ -254,14 +254,14 @@ cloche {
             include(libs.lattice)
 
             when (item_viewer) {
-                "REI" -> modRuntimeOnly(libs.fabric.rei) { exclude(group = "net.fabricmc") }
-                "EMI" -> modRuntimeOnly(libs.fabric.emi)
-                "JEI" -> modRuntimeOnly(libs.fabric.jei)
+                "REI" -> modLocalRuntime(libs.fabric.rei) { exclude(group = "net.fabricmc") }
+                "EMI" -> modLocalRuntime(libs.fabric.emi)
+                "JEI" -> modLocalRuntime(libs.fabric.jei)
                 "disabled" -> {}
                 else -> error("Invalid item viewer for Fabric: $item_viewer")
             }
 
-            if (devauth_enabled.toBoolean()) modRuntimeOnly(libs.fabric.devauth)
+            if (devauth_enabled.toBoolean()) modLocalRuntime(libs.fabric.devauth)
         }
 
         metadata {
@@ -331,7 +331,7 @@ cloche {
             modImplementation(libs.forge.flywheel)
             modCompileOnly(libs.forge.rei)
             implementation(libs.forge.mixinExtras)
-            compileOnlyApi(libs.forge.jei)
+            modCompileOnly(libs.forge.jei)
             modCompileOnly(libs.forge.emi)
             modApi(libs.forge.kritter)
             modCompileOnly(libs.forge.oculus)
@@ -353,14 +353,14 @@ cloche {
             modRuntimeOnly(libs.forge.curios)
 
             when (item_viewer) {
-                "EMI" -> modRuntimeOnly(libs.forge.emi)
-                "REI" -> modRuntimeOnly(libs.forge.rei)
-                "JEI" -> modRuntimeOnly(libs.forge.jei)
+                "EMI" -> modLocalRuntime(libs.forge.emi)
+                "REI" -> modLocalRuntime(libs.forge.rei)
+                "JEI" -> modLocalRuntime(libs.forge.jei)
                 "disabled" -> {}
                 else -> error("Invalid item viewer for Forge: $item_viewer")
             }
 
-            if (devauth_enabled.toBoolean()) modRuntimeOnly(libs.forge.devauth)
+            if (devauth_enabled.toBoolean()) modLocalRuntime(libs.forge.devauth)
         }
     }
 }
